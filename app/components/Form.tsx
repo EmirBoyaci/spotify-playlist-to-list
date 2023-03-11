@@ -28,10 +28,16 @@ const Form = ({ url, setUrl, setResponse }: FormProps) => {
 
   return (
     <>
-      <form className={clsx(inter.className, "flex space-x-2")} onSubmit={onFormSubmit}>
+      <form
+        className={clsx(
+          inter.className,
+          "flex w-full flex-col items-center space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2"
+        )}
+        onSubmit={onFormSubmit}
+      >
         <input
           type="url"
-          className="w-96 rounded-lg border border-gray-300 bg-gray-50 p-4 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 bg-gray-50 p-4 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           placeholder="https://open.spotify.com/playlist/1xqlhV6SvRyWuafrSDJeGy?si=8b67b0168aa047d8"
           required={true}
           value={url}
@@ -40,7 +46,7 @@ const Form = ({ url, setUrl, setResponse }: FormProps) => {
         />
         <button
           type="submit"
-          className="rounded-lg border border-gray-300 bg-gray-50 p-4 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+          className="w-1/6 min-w-fit rounded-lg border border-gray-300 bg-gray-50 p-4 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
         >
           Generate List
         </button>

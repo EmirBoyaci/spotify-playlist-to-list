@@ -42,6 +42,7 @@ const Form = ({ url, setUrl, setResponse }: FormProps) => {
           required={true}
           value={url}
           onChange={(event) => setUrl(event.target.value)}
+          onFocus={(event) => event.target.select()}
           pattern="https:\/\/open\.spotify\.com\/playlist\/([a-zA-Z0-9]{22}).*"
         />
         <button

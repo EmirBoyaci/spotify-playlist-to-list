@@ -42,7 +42,7 @@ const Form = ({ url, setUrl, setResponse }: FormProps) => {
           required={true}
           value={url}
           onChange={(event) => setUrl(event.target.value)}
-          pattern="https:\/\/open\.spotify\.com\/playlist\/[a-zA-Z0-9]+(\?si=[a-zA-Z0-9]+)?"
+          pattern="https:\/\/open\.spotify\.com\/playlist\/([a-zA-Z0-9]{22}).*"
         />
         <button
           type="submit"

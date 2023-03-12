@@ -7,7 +7,9 @@ interface ResultsProps {
 const Results = ({ response }: ResultsProps) => {
   return (
     <div className="flex flex-col">
-      {response?.error && <div className="font-bold text-red-600">{response.error}</div>}
+      {response?.error && (
+        <div className="text-justify font-bold text-red-600">{response.error}</div>
+      )}
       {response?.data?.map((track, index) => {
         return (
           <span key={track.name + index} className="text-white">

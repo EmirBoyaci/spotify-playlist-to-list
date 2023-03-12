@@ -37,6 +37,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <li>
               <a
                 href="https://github.com/EmirBoyaci/spotify-playlist-to-list"
+                target="_blank"
                 className="hover:underline md:mr-6"
               >
                 <svg

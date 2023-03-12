@@ -1,5 +1,9 @@
-import "./globals.css";
+import clsx from "clsx";
+import { Inter } from "next/font/google";
 import { ReactNode } from "react";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Spotify Playlist to List",
@@ -14,7 +18,14 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="flex-col items-center justify-center p-2 dark:bg-gray-500">{children}</body>
+      <body
+        className={clsx(
+          inter.className,
+          "flex-col items-center justify-center bg-slate-600 p-2 text-black dark:bg-gray-600 dark:text-white"
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }

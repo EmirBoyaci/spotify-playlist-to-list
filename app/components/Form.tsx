@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
-import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from "react";
 import { TrackResponse } from "~/app/types";
 
 interface FormProps {
@@ -13,10 +14,17 @@ interface FormProps {
 
 const Form = ({ url, setUrl, setResponse }: FormProps) => {
   const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
 
-  const onFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    if (url) {
+      onFormSubmit();
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const onFormSubmit = async (event?: FormEvent<HTMLFormElement>) => {
     setLoading(true);
-    event.preventDefault();
+    event && event.preventDefault();
 
     const { data: response } = await axios.get<TrackResponse>("api/getSpotifyList", {
       params: { playlistUrl: url },
@@ -24,6 +32,7 @@ const Form = ({ url, setUrl, setResponse }: FormProps) => {
 
     setResponse(response);
     setLoading(false);
+    router.push(`/?playlistUrl=${url.split("https://open.spotify.com/playlist/")[1]}`);
   };
 
   return (

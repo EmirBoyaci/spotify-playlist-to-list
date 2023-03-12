@@ -1,11 +1,16 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Form from "~/app/components/Form";
 import Results from "~/app/components/Results";
 import { TrackResponse } from "~/app/types";
 
 export default function Home() {
-  const [url, setUrl] = useState<string>("");
+  const searchParams = useSearchParams();
+  const playlistUrl = searchParams.get("playlistUrl");
+  const [url, setUrl] = useState<string>(
+    playlistUrl ? `https://open.spotify.com/playlist/${playlistUrl}` : ""
+  );
   const [response, setResponse] = useState<TrackResponse>();
 
   return (

@@ -13,6 +13,12 @@ export const metadata = {
     initialScale: 1,
     maximumScale: 1,
   },
+  openGraph: {
+    url: "https://spotify-playlist-to-list.boyaci.dev",
+    type: "website",
+    title: "Spotify Playlist to List",
+    description: "Generate/export Spotify playlists as text and image just in a seconds!",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

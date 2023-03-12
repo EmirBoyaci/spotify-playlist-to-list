@@ -8,6 +8,7 @@ import { TrackResponse } from "~/app/types";
 export default function Home() {
   const searchParams = useSearchParams();
   const playlistUrl = searchParams.get("playlistUrl");
+  const [copied, setCopied] = useState<boolean>(false);
   const [url, setUrl] = useState<string>(
     playlistUrl ? `https://open.spotify.com/playlist/${playlistUrl}` : ""
   );
@@ -27,9 +28,29 @@ export default function Home() {
                 })
                 .join("\n") ?? "";
             navigator.clipboard.writeText(text);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 5000);
           }}
         >
-          Copy
+          {copied ? (
+            <>
+              <svg
+                fill="none"
+                role="status"
+                stroke="currentColor"
+                className="mr-3 inline h-4 w-4"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+              </svg>
+              Copied
+            </>
+          ) : (
+            "Copy"
+          )}
         </button>
       ) : null}
       <Results response={response} />
